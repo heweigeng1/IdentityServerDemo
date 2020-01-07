@@ -1,12 +1,11 @@
 ﻿using IdentityServer4.Models;
+using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace WebClient
+namespace Common
 {
-    public static class Config
+    public static class BasicConfig
     {
         /// <summary>
         /// API资源
@@ -40,5 +39,24 @@ namespace WebClient
                     AllowedScopes = { "api1" }
                 }
         };
+
+        public static List<TestUser> GetUsers()
+        {
+            return new List<TestUser>
+            {
+                new TestUser
+                {
+                    SubjectId="1",
+                    Password="123456",
+                    Username="test1"
+                },
+                new TestUser
+                {
+                    SubjectId="1",
+                    Password="223456",
+                    Username="test2"
+                }
+            };
+        }
     }
 }
