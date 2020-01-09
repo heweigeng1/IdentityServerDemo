@@ -19,12 +19,22 @@ namespace WebClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore(option => option.EnableEndpointRouting = false)
+                .AddAuthorization();
+
+            services.AddAuthentication("Bearer").AddJwtBearer("Bearer", option =>
+            {
+                option.Authority = "https://localhost:44348/";
+                //option.RequireHttpsMetadata = false;
+                option.Audience = "api1";
+            });
+            services.AddControllersWithViews();
             //services.AddAuthorization();
-            services.AddIdentityServer()
-                    .AddDeveloperSigningCredential()
-                    .AddInMemoryApiResources(BasicConfig.GetApiResources())
-                    .AddInMemoryClients(BasicConfig.GetClients());
-            services.AddControllers();
+            //services.AddIdentityServer()
+            //        .AddDeveloperSigningCredential()
+            //        .AddInMemoryApiResources(BasicConfig.GetApiResources())
+            //        .AddInMemoryClients(BasicConfig.GetClients());
+            //services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,18 +44,24 @@ namespace WebClient
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseIdentityServer();
+            //app.UseIdentityServer();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
+
         }
     }
 }

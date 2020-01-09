@@ -4,8 +4,7 @@ using System.Linq;
 
 namespace WebClient.Controllers
 {
-    [Route("identity")]
-    [Authorize]
+    //[Authorize]
     public class IdentityController : ControllerBase
     {
         [HttpGet()]

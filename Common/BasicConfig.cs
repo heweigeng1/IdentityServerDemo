@@ -37,9 +37,26 @@ namespace Common
                     },
                     // 客户端有权访问的范围（Scopes）
                     AllowedScopes = { "api1" }
+                },
+                new Client
+                {
+                    ClientId = "console client",
+                    // 没有交互性用户，使用 clientid/secret 实现认证。
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    // 用于认证的密码
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    // 客户端有权访问的范围（Scopes）
+                    AllowedScopes = { "consoleapi" }
                 }
         };
 
+        /// <summary>
+        /// 用户
+        /// </summary>
+        /// <returns></returns>
         public static List<TestUser> GetUsers()
         {
             return new List<TestUser>
