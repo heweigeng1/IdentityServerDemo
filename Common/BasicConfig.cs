@@ -41,7 +41,7 @@ namespace Common
                 new Client
                 {
                     ClientId = "console.client",
-
+                    ClientName="console use",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     // 用于认证的密码
                     ClientSecrets =
@@ -49,7 +49,7 @@ namespace Common
                         new Secret("secret".Sha256())
                     },
                     // 客户端有权访问的范围（Scopes）
-                    AllowedScopes = { "consoleapi" }
+                   AllowedScopes  = { "api1"},
                 }
         };
 
