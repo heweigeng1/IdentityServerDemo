@@ -40,8 +40,8 @@ namespace Common
                 },
                 new Client
                 {
-                    ClientId = "console client",
-                    // 没有交互性用户，使用 clientid/secret 实现认证。
+                    ClientId = "console.client",
+
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     // 用于认证的密码
                     ClientSecrets =
