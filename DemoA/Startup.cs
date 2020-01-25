@@ -22,6 +22,7 @@ namespace DemoA
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(BasicConfig.GetApiResources())
+                .AddInMemoryIdentityResources(BasicConfig.GetIdentityResources())
                 .AddInMemoryClients(BasicConfig.GetClients())
                 .AddTestUsers(BasicConfig.GetUsers());
         }

@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,17 @@ namespace Common
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "我的 API")
+                new ApiResource("api1", "我的 API"),
+                new ApiResource("consoleapi","控制台API")
+            };
+        }
+
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            return new List<IdentityResource>
+            {
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile(),
             };
         }
 
@@ -49,7 +60,9 @@ namespace Common
                         new Secret("secret".Sha256())
                     },
                     // 客户端有权访问的范围（Scopes）
-                   AllowedScopes  = { "api1"},
+                   AllowedScopes  = { "consoleapi",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile},
                 }
         };
 

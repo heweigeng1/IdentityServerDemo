@@ -26,7 +26,7 @@ namespace WebClient
             {
                 option.Authority = "https://localhost:44348/";
                 //option.RequireHttpsMetadata = false;
-                option.Audience = "api1";
+                option.Audience = "consoleapi";
             });
             services.AddControllersWithViews();
             //services.AddAuthorization();
