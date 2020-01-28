@@ -1,8 +1,10 @@
-﻿using IdentityServer4;
+﻿using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace Common
 {
@@ -27,6 +29,8 @@ namespace Common
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResources.Email(),
+                new IdentityResources.Phone(),
             };
         }
 
@@ -62,7 +66,10 @@ namespace Common
                     // 客户端有权访问的范围（Scopes）
                    AllowedScopes  = { "consoleapi",
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile},
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Phone
+                    },
                 }
         };
 
@@ -79,13 +86,28 @@ namespace Common
                     SubjectId="1",
                     Password="123456",
                     Username="test1"
+
                 },
                 new TestUser
                 {
                     SubjectId="1",
                     Password="223456",
                     Username="test2"
-                }
+                },
+                new TestUser{
+                SubjectId="2",
+                Username="test3",
+                Password="123456",
+                    Claims =
+                    {
+                        new Claim(JwtClaimTypes.Name,"tom cat"),
+                        new Claim(JwtClaimTypes.FamilyName,"lao mao"),
+                        new Claim(JwtClaimTypes.GivenName,"mao"),
+                        new Claim(JwtClaimTypes.PhoneNumber,"13435959470"),
+                        new Claim(JwtClaimTypes.Address,"bei jing"),
+                        new Claim(JwtClaimTypes.Email,"laomao@163.com")
+                    }
+                },
             };
         }
     }

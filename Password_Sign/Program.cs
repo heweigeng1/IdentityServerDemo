@@ -88,11 +88,11 @@ namespace Password_Sign
             var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
             {
                 Address = disco.TokenEndpoint,
-                UserName = "test1",
+                UserName = "test3",
                 Password = "123456",
                 ClientId = "console.client",
                 ClientSecret = "secret",
-                Scope = "consoleapi openid profile",
+                Scope = "consoleapi openid profile email phone",
             });
             return tokenResponse;
         }
