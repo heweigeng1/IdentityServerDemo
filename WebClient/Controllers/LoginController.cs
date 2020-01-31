@@ -4,8 +4,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IdentityModel.Client;
-using IdentityModel.OidcClient;
-using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebClient.Controllers

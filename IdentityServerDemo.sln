@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClient", "WebClient\WebC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{B31C00F7-0770-4910-B40C-C85751113F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Password_Sign", "Password_Sign\Password_Sign.csproj", "{E7C68DFC-A347-4735-A4B0-8F5C27825350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Password_Sign", "Password_Sign\Password_Sign.csproj", "{E7C68DFC-A347-4735-A4B0-8F5C27825350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

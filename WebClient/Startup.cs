@@ -29,12 +29,6 @@ namespace WebClient
                 option.Audience = "consoleapi";
             });
             services.AddControllersWithViews();
-            //services.AddAuthorization();
-            //services.AddIdentityServer()
-            //        .AddDeveloperSigningCredential()
-            //        .AddInMemoryApiResources(BasicConfig.GetApiResources())
-            //        .AddInMemoryClients(BasicConfig.GetClients());
-            //services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
