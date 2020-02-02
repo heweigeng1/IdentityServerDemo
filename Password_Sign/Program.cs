@@ -19,8 +19,8 @@ namespace Password_Sign
             {
                 Console.WriteLine("tokenEndPoint" + disco.TokenEndpoint);
             }
-            //await 获取API资源DEMO(client, disco);
-            await 获取IdentityAPI资源DEMO(client, disco);
+            await 获取API资源DEMO(client, disco);
+            //await 获取IdentityAPI资源DEMO(client, disco);
             Console.ReadKey();
         }
 
@@ -77,6 +77,7 @@ namespace Password_Sign
             var str = await apiResponse.Content.ReadAsStringAsync();
             Console.WriteLine(str);
         }
+
         /// <summary>
         /// 获取AccessToken
         /// </summary>

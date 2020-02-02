@@ -64,7 +64,7 @@ namespace Common
                         new Secret("secret".Sha256())
                     },
                     // 客户端有权访问的范围（Scopes）
-                   AllowedScopes  = { "consoleapi",
+                   AllowedScopes  = { "api1","consoleapi",
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
@@ -86,7 +86,6 @@ namespace Common
                     SubjectId="1",
                     Password="123456",
                     Username="test1"
-
                 },
                 new TestUser
                 {

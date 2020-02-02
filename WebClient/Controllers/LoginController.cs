@@ -91,9 +91,6 @@ namespace WebClient.Controllers
 
             var disco = await client.GetDiscoveryDocumentAsync("https://localhost:44348/");
 
-            //var tokenEndpoint = disco.TokenEndpoint;
-            //var keys = disco.KeySet.Keys;
-
             var tokenClient = new TokenClient(client, new TokenClientOptions
             {
                 ClientId = "client",
@@ -106,7 +103,10 @@ namespace WebClient.Controllers
             apiclient.SetBearerToken(tokenResponse.AccessToken);
             var apiResponse = await apiclient.GetAsync("https://localhost:44370/access/getuserinfo");
             var str = await apiResponse.Content.ReadAsStringAsync();
-            return new JsonResult(str);
+            //用于反序列化匿名类型的json字符串.
+            var definition = new[] { new { Type = "0", Value = "" } };
+            var obj = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(str, definition);
+            return new JsonResult(obj);
         }
     }
 }
