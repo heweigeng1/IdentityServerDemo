@@ -31,6 +31,7 @@ namespace Common
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
                 new IdentityResources.Phone(),
+                new IdentityResources.Address(),
             };
         }
 
@@ -70,6 +71,26 @@ namespace Common
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.Phone
                     },
+                },
+                new Client
+                {
+                    ClientId = "mvc client",
+                    ClientName="mvc use",
+                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                    RedirectUris={ "http://localhost:5002/signin-oidc"},
+                    FrontChannelLogoutUri="http://localhost:5002/signout-oidc",
+                    PostLogoutRedirectUris={"http://localhost:5002/signout-callback-oidc"},
+                    AlwaysIncludeUserClaimsInIdToken=false,
+                    AllowOfflineAccess=true,//是否允许离线访问
+                    ClientSecrets={new Secret("secret".Sha256())},
+                    AllowedScopes={
+                        "api1",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Phone,
+                        IdentityServerConstants.StandardScopes.Address,
+                    }
                 }
         };
 
